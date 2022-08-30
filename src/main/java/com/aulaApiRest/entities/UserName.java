@@ -3,20 +3,29 @@ package com.aulaApiRest.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class User implements Serializable {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class UserName implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	@Id //indica para o JPA que é chave primaria da tabela do banco de dados
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String email;
 	private String phone;
 	private String password;
 
-	public User() {
+	public UserName() {
 
 	}
 
-	public User(Long id, String name, String email, String phone, String password) {
+	public UserName(Long id, String name, String email, String phone, String password) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -78,7 +87,7 @@ public class User implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		UserName other = (UserName) obj;
 		return Objects.equals(id, other.id);
 	}
 
